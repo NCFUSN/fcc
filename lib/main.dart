@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-void main() {
-  runApp(AppCore());
-}
+// void main() {
+//   runApp(AppCore());
+// }
 
-//void main() => AppCore(); // shorter way to implement entry point
+void main() => runApp(AppCore()); // shorter way to implement entry point
 
 class AppCore extends StatelessWidget {
   @override
