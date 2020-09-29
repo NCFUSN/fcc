@@ -10,19 +10,18 @@ void main() => runApp(AppCore()); // shorter way to implement entry point
 class AppCore extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return AppState();
+    return _AppState();
   }
 }
 
-class AppState extends State<AppCore> {
-  var questionIndex = 0;
+class _AppState extends State<AppCore> {
+  var _questionIndex = 0;
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() {
-      questionIndex = questionIndex + 1;
+      _questionIndex = _questionIndex + 1;
     });
-    print(questionIndex);
+    print(_questionIndex);
   }
 
   @override
@@ -39,14 +38,14 @@ class AppState extends State<AppCore> {
           ),
           body: Column(
             children: [
-              Text(questions.elementAt(questionIndex)),
-              RaisedButton(child: Text('Answer 1'), onPressed: answerQuestion),
+              Text(questions.elementAt(_questionIndex)),
+              RaisedButton(child: Text('Answer 1'), onPressed: _answerQuestion),
               RaisedButton(
-                  child: Text('Answer 2'), onPressed: () => answerQuestion()),
+                  child: Text('Answer 2'), onPressed: () => _answerQuestion()),
               RaisedButton(
                   child: Text('Answer 3'),
                   onPressed: () {
-                    answerQuestion();
+                    _answerQuestion();
                   })
             ],
           )),
