@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import './question.dart'; // relative path
+import './answer.dart';
 
 // void main() {
 //   runApp(AppCore());
@@ -40,14 +41,9 @@ class _AppState extends State<AppCore> {
           body: Column(
             children: [
               Question(questions.elementAt(_questionIndex)),
-              RaisedButton(child: Text('Answer 1'), onPressed: _answerQuestion),
-              RaisedButton(
-                  child: Text('Answer 2'), onPressed: () => _answerQuestion()),
-              RaisedButton(
-                  child: Text('Answer 3'),
-                  onPressed: () {
-                    _answerQuestion();
-                  })
+              Answer(_answerQuestion),
+              Answer(_answerQuestion),
+              Answer(_answerQuestion)
             ],
           )),
     );
