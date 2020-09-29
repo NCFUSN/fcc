@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import './question.dart'; // relative path
 
 // void main() {
 //   runApp(AppCore());
@@ -34,11 +35,11 @@ class _AppState extends State<AppCore> {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-            title: Text('Some Title'),
+            title: Text('Questionary'),
           ),
           body: Column(
             children: [
-              Text(questions.elementAt(_questionIndex)),
+              Question(questions.elementAt(_questionIndex)),
               RaisedButton(child: Text('Answer 1'), onPressed: _answerQuestion),
               RaisedButton(
                   child: Text('Answer 2'), onPressed: () => _answerQuestion()),
