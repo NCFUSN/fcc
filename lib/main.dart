@@ -7,11 +7,21 @@ import 'package:flutter/cupertino.dart';
 
 void main() => runApp(AppCore()); // shorter way to implement entry point
 
-class AppCore extends StatelessWidget {
+class AppCore extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return AppState();
+  }
+}
+
+class AppState extends State<AppCore> {
   var questionIndex = 0;
 
   void answerQuestion() {
-    questionIndex = questionIndex + 1;
+    setState(() {
+      questionIndex = questionIndex + 1;
+    });
     print(questionIndex);
   }
 
