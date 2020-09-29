@@ -8,12 +8,20 @@ import 'package:flutter/cupertino.dart';
 void main() => runApp(AppCore()); // shorter way to implement entry point
 
 class AppCore extends StatelessWidget {
+  var questionIndex = 0;
+
   void answerQuestion() {
-    print('answering');
+    questionIndex = questionIndex + 1;
+    print(questionIndex);
   }
 
   @override
   Widget build(BuildContext context) {
+    var questions = [
+      "What's your favourite colour?",
+      "What's your favourite animal?"
+    ];
+
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
@@ -21,14 +29,14 @@ class AppCore extends StatelessWidget {
           ),
           body: Column(
             children: [
-              Text('The Question'),
+              Text(questions.elementAt(questionIndex)),
               RaisedButton(child: Text('Answer 1'), onPressed: answerQuestion),
               RaisedButton(
-                  child: Text('Answer 2'), onPressed: () => print('answering')),
+                  child: Text('Answer 2'), onPressed: () => answerQuestion()),
               RaisedButton(
                   child: Text('Answer 3'),
                   onPressed: () {
-                    print('answering');
+                    answerQuestion();
                   })
             ],
           )),
