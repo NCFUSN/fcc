@@ -1,6 +1,6 @@
 # fcc
 
-A new Flutter project.
+Just a rookie Flutter project. Covers the basics of Dart and Flutter framework.
 
 ## Getting Started
 
