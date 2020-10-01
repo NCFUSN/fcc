@@ -34,6 +34,9 @@ class _AppState extends State<AppCore> {
   ];
 
   void _answerQuestion() {
+    if (_questionIndex < questions.length) {
+      print(null.hashCode);
+    }
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
@@ -47,17 +50,21 @@ class _AppState extends State<AppCore> {
           appBar: AppBar(
             title: Text('Questionary'),
           ),
-          body: Column(
-            children: [
-              Question(
-                questions[_questionIndex]['questionText'],
-              ),
-              ...(questions[_questionIndex]['answers'] as List<String>)
-                  .map((answer) {
-                return Answer(_answerQuestion, answer);
-              }).toList()
-            ],
-          )),
+          body: _questionIndex < questions.length
+              ? Column(
+                  children: [
+                    Question(
+                      questions[_questionIndex]['questionText'],
+                    ),
+                    ...(questions[_questionIndex]['answers'] as List<String>)
+                        .map((answer) {
+                      return Answer(_answerQuestion, answer);
+                    }).toList()
+                  ],
+                )
+              : Center(
+                  child: Text('You did it!'),
+                )),
     );
   }
 }
