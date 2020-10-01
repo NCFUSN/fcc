@@ -63,21 +63,28 @@ class _AppState extends State<AppCore> {
     print(_questionIndex);
   }
 
+  void resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBar(
-        title: Text('Questionary'),
-      ),
-      body: _questionIndex < _questions.length
-          ? Quiz(
-              questions: _questions,
-              answerQuestion: _answerQuestion,
-              questionIndex: _questionIndex)
-          : Result(
-              resultScore: _totalScore,
+            appBar: AppBar(
+              title: Text('Questionary'),
             ),
-    ));
+            body: _questionIndex < _questions.length
+                ? Quiz(
+                    questions: _questions,
+                    answerQuestion: _answerQuestion,
+                    questionIndex: _questionIndex)
+                : Result(
+                    resultScore: _totalScore,
+                    resetQuiz: resetQuiz,
+                  )));
   }
 }
