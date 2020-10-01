@@ -1,7 +1,7 @@
+import 'package:fcc/result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import './question.dart'; // relative path
-import './answer.dart';
+import './quiz.dart'; // relative path
 
 // void main() {
 //   runApp(AppCore());
@@ -18,7 +18,7 @@ class AppCore extends StatefulWidget {
 
 class _AppState extends State<AppCore> {
   var _questionIndex = 0;
-  final questions = const [
+  final _questions = const [
     {
       'questionText': "What is your favourite colour?",
       'answers': ['Black', 'Red', 'Green', 'White'],
@@ -34,7 +34,7 @@ class _AppState extends State<AppCore> {
   ];
 
   void _answerQuestion() {
-    if (_questionIndex < questions.length) {
+    if (_questionIndex < _questions.length) {
       print(null.hashCode);
     }
     setState(() {
@@ -50,21 +50,12 @@ class _AppState extends State<AppCore> {
           appBar: AppBar(
             title: Text('Questionary'),
           ),
-          body: _questionIndex < questions.length
-              ? Column(
-                  children: [
-                    Question(
-                      questions[_questionIndex]['questionText'],
-                    ),
-                    ...(questions[_questionIndex]['answers'] as List<String>)
-                        .map((answer) {
-                      return Answer(_answerQuestion, answer);
-                    }).toList()
-                  ],
-                )
-              : Center(
-                  child: Text('You did it!'),
-                )),
+          body: _questionIndex < _questions.length
+              ? Quiz(
+                  questions: _questions,
+                  answerQuestion: _answerQuestion,
+                  questionIndex: _questionIndex)
+              : Result()),
     );
   }
 }
